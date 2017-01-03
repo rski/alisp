@@ -18,7 +18,7 @@ data Operator = Plus | Minus | Mult | Div deriving (Show, Eq)
 tokenize :: String -> [Token]
 tokenize [] = []
 tokenize (c : cs)
-  | elem c "+-*/"  = LOperator (getOp c) : tokenize cs
+  | c `elem` "+-*/"  = LOperator (getOp c) : tokenize cs
   | c == '(' = LLParen : tokenize cs
   | c == ')' = LRParen : tokenize cs
   | c == ';' = LSemicolon : tokenize cs
